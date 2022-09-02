@@ -175,5 +175,6 @@ x86 系统中 unsigned int 和 box 都为 32 Bits, 通过该联合使 st_box 和
 union u_box u;
 u.ui_box = 0;
 ```
-
+## 读后感
+感觉最后利用联合体清零简直不能再妙了，另外位域存储颜色RGB岂不是很美？
 > 学习参考自：<http://www.yuan-ji.me/C-C-%E4%BD%8D%E5%9F%9F-Bit-fields-%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/>
