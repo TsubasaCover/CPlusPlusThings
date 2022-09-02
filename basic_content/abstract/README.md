@@ -138,3 +138,6 @@ public:
 抽象类由派生类继承实现！
 
 > 代码样例：[derived_full.cpp](./derived_full.cpp)
+
+## 5.定义抽象类的指针指向继承类
+> 代码样例：[derived_another.cpp](./derived_another.cpp)
