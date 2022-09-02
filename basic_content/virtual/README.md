@@ -25,6 +25,77 @@
 ## 4.可以不可以
 
 （1） **静态函数可以声明为虚函数吗？**
+```cpp
+1.virtual与静态函数
+C++中，静态成员函数不能被声明为virtual函数。
+例如，下面的程序会编译失败。
+#include<iostream>
+class Test
+{
+   public:
+      // 编译错误：static成员函数不能声明为virtual   
+      virtual static void fun()  { }
+};
+
+
+同样地，静态成员函数也不能被声明为const和volatile.
+下面的程序也会编译失败。
+#include<iostream>
+class Test
+{
+   public:
+      // 编译错误: static成员函数不能为const
+      static void fun() const { }
+      static void fun() volatile{}//编译错误
+
+
+      // 如果声明为下面这样，是可以的。
+      const static void fun() {}
+      或类似于
+      const static int fun() { return 0; }
+};
+2.为何static成员函数不能为virtual
+1. static成员不属于任何类对象或类实例，所以即使给此函数加上virutal也是没有任何意义的。
+2. 静态与非静态成员函数之间有一个主要的区别。那就是静态成员函数没有this指针。
+   
+   虚函数依靠vptr和vtable来处理。vptr是一个指针，在类的构造函数中创建生成，并且只能用this指针来访问它，因为它是类的一个成员，并且vptr指向保存虚函数地址的vtable.
+   对于静态成员函数，它没有this指针，所以无法访问vptr. 这就是为何static函数不能为virtual.
+   虚函数的调用关系：this -> vptr -> vtable ->virtual function
+
+
+通过下面例子可以确定，当类增加了一个虚函数后，类的大小会增大4字节(指针的大小).
+class Test
+{
+public:
+      int _m;
+};
+sizeof(Test) = 4;
+
+
+加入虚函数后，
+class Test
+{
+public:
+      int _m;
+      virtual void fun();
+};
+sizeof(Test) = 8
+3.为何static成员函数不能为const函数
+当声明一个非静态成员函数为const时，对this指针会有影响。对于一个Test类中的const修饰的成员函数，this指针相当于Test const *, 而对于非const成员函数，this指针相当于Test *.
+  而static成员函数没有this指针，所以使用const来修饰static成员函数没有任何意义。
+  volatile的道理也是如此。
+public:
+      int _m;
+      virtual void fun();
+};
+sizeof(Test) = 8
+
+
+
+
+volatile 与const类似 ，volatile的作用是作为指令关键字，确保本条指令不会因编译器的优化而省略，且要求每次直接读值。
+
+```
 
 原因主要有两方面：
 
