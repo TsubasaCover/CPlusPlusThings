@@ -101,7 +101,7 @@ g++ add.cpp add.o -o main
 
 而通常为了C代码能够通用，即既能被C调用，又能被C++调用，头文件通常会有如下写法：
 
-```c
+```cpp
 #ifdef __cplusplus
 extern "C"{
 #endif
