@@ -113,7 +113,7 @@ typedef struct Base1 {
 
 struct Base {         
     int v1;
-//    private:   //error!
+//    private:   //error!，作者这样说有歧义，并不是说struct中不能用private修饰符，而是private修饰了之后，外面无法访问
         int v3;
     public:     //显示声明public
         int v2;
