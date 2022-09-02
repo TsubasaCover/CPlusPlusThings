@@ -1,0 +1,13 @@
+两个知识点：
+/**
+ * @brief 代表一种新类型，不是变量！所以与下面的pFun不一样！
+ */
+typedef void (*func)(void);  
+定义了一个新类型func，参数为void，返回值为void，*号表明func接受的是地址赋值，函数名本身也就是地址，所以表现在例子中就是func pfun = myfunc;
+调用的时候与myfunc一样使用
+第二个知识点：
+/**
+ * @brief 定义了一个变量pFun，这个变量是个指针，指向返回值为空和参数为int的函数的指针！
+ */
+void (*pFun)(int);
+同样是把函数名赋值给它，但调用的时候要用取义符号*，如pFun = glFun; (*pFun)(2); 
