@@ -94,14 +94,15 @@ class Derived: public Base
 Fun getAddr(void* obj,unsigned int offset)
 {
     cout<<"======================="<<endl;
-    void* vptr_addr = (void *)*(unsigned long *)obj;  //64位操作系统，占8字节，通过*(unsigned long *)obj取出前8字节，即vptr指针
+    void* vptr_addr = (void *)*(long long *)obj;  //64位操作系统，占8字节，通过*(long long *)obj取出前8字节，即vptr指针
     printf("vptr_addr:%p\n",vptr_addr);
     
     /**
-     * @brief 通过vptr指针访问virtual table，因为虚表中每个元素(虚函数指针)在64位编译器下是8个字节，因此通过*(unsigned long *)vptr_addr取出前8字节，
+     * @brief 通过vptr指针访问virtual table，因为虚表中每个元素(虚函数指针)在64位编译器下是8个字节，因此通过*(long long *)vptr_addr取出前8字节，
      * 后面加上偏移量就是每个函数的地址！
+     * 另注：上面说的64位操作系统其实不准确，我认为是64位编译器才行，笔者也是64位操作系统，可是*(unsigned long *)vptr_addr不行，只取到了4字节，只能用*(long long *)vptr_addr
      */
-    void* func_addr = (void *)*((unsigned long *)vptr_addr+offset);
+    void* func_addr = (void *)*((long long *)vptr_addr+offset);
     printf("func_addr:%p\n",func_addr);
     return (Fun)func_addr;
 }
