@@ -29,12 +29,12 @@ int main()
         cout<<*it<<" ";
     cout<<endl;
 
-
+    /*
     using nullptr_t = decltype(nullptr);
     nullptr_t  nu;
     int * p =NULL;
     if(p==nu)
-        cout<<"NULL"<<endl;
+        cout<<"NULL"<<endl;*/这一部分自己实验不通过，提示nu未被初始化
 
 
     typedef decltype(vec.begin()) vectype;
