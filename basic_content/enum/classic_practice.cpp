@@ -80,6 +80,7 @@ int main()
     
     Color2 c2 = Color2::RED;
     cout << static_cast<int>(c2) << endl;
+    //cout << c2 << endl;//错误，enum class不支持隐式转换
     
     char c3 = static_cast<char>(Color3::RED);
     cout<<c3<<endl;
