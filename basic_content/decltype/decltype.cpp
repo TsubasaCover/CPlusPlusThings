@@ -34,7 +34,7 @@ int main()
     nullptr_t  nu;
     int * p =NULL;
     if(p==nu)
-        cout<<"NULL"<<endl;*/这一部分VS2022环境下提示nu未被初始化，应该是编译器的原因，Code Block下的gcc编译器是没问题的
+        cout<<"NULL"<<endl;*///这一部分VS2022环境下提示nu未被初始化，应该是编译器的原因，Code Block下的gcc编译器是没问题的
 
 
     typedef decltype(vec.begin()) vectype;
