@@ -14,3 +14,4 @@
 
 参考链接：
 > https://stackoverflow.com/questions/4600295/what-is-the-meaning-of-operator-bool-const
+> https://blog.csdn.net/lihao21/article/details/54098169
