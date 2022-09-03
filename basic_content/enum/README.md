@@ -115,7 +115,7 @@ const 数据成员只在某个对象生存期内是常量，而对于整个类�
 ```c++
 class A 
 {
-  const int SIZE = 100;   // 错误，企图在类声明中初始化 const 数据成员 
+  const int SIZE = 100;   // 错误，企图在类声明中初始化 const 数据成员，C++11后是没问题的
   int array[SIZE];  // 错误，未知的 SIZE 
 }; 
 ```
